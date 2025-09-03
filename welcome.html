@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>🎮 Welcome to Tic Tac Toe 🎮</h1>
+    <p>Select a mode to start playing:</p>
+
+    <button onclick="selectMode('pvp')">Player vs Player</button>
+    <button onclick="selectMode('pvc')">Player vs Computer</button>
+
+    <!-- Difficulty Options -->
+    <div id="difficulty-container" style="display:none; margin-top:20px;">
+      <label for="difficulty">Choose Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <br><br>
+      <button onclick="startGame()">Start Game</button>
+    </div>
+  </div>
+
+  <script>
+    function selectMode(mode) {
+      localStorage.setItem("mode", mode);
+      if (mode === "pvc") {
+        document.getElementById("difficulty-container").style.display = "block";
+      } else {
+        window.location.href = "game.html";
+      }
+    }
+
+    function startGame() {
+      const difficulty = document.getElementById("difficulty").value;
+      localStorage.setItem("difficulty", difficulty);
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>
